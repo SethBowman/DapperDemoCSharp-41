@@ -13,13 +13,29 @@ var config = new ConfigurationBuilder()
 string connString = config.GetConnectionString("DefaultConnection");
 IDbConnection conn = new MySqlConnection(connString);
 
-var repo = new DepartmentRepo(conn);
+//var repo = new DepartmentRepo(conn);
 
-repo.InsertDepartment("Other Cool Stuff");
+//repo.InsertDepartment("Other Cool Stuff");
 
-var departments = repo.GetAllDepartments();
+//repo.DeleteDepartment(5);
+//repo.DeleteDepartment(6);
 
-foreach (var department in departments)
+//var departments = repo.GetAllDepartments();
+
+//foreach (var department in departments)
+//{
+//    Console.WriteLine($"{department.DepartmentID} | {department.Name}");
+//}
+
+var repo = new ProductRepo(conn);
+
+//repo.CreateProduct("Diablo 4", 60.00, 1, false, 1500);
+//repo.UpdateProductName(940, "The Elder Scrolls III");
+//repo.DeleteProduct(942);
+
+var products = repo.GetAllProducts();
+
+foreach (var product in products)
 {
-    Console.WriteLine($"{department.DepartmentID} | {department.Name}");
+    Console.WriteLine($"{product.ProductID} | {product.Name} | {product.Price} | {product.CategoryID} | {product.OnSale} | {product.StockLevel}");
 }

@@ -26,5 +26,10 @@ namespace DapperDemoCSharp_41
             _connection.Execute("INSERT INTO departments (Name) VALUES (@newName);",
                 new { newName });
         }
+
+        public void DeleteDepartment(int id)
+        {
+            _connection.Execute("DELETE FROM departments WHERE DepartmentID = @id", new { id });
+        }
     }
 }
